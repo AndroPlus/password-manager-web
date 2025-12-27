@@ -1,0 +1,14 @@
+[
+    {
+        "app_name": "Google",
+        "fields": [
+            "{\"source_app_login_id\":\"user@gmail.com\",\"source_app_password\":\"SecurePass123\",\"source_user_title\":\"Personal Email\"}"
+        ]
+    },
+    {
+        "app_name": "Facebook",
+        "fields": [
+            "{\"source_app_login_id\":\"fb_user\",\"source_app_password\":\"SocialMediaPass!\",\"source_user_title\":\"Main Account\"}"
+        ]
+    }
+]
