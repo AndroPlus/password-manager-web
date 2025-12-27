@@ -7,26 +7,36 @@ A secure, web-based companion for the Android Password Manager application. This
 - **AES-GCM Encryption**: Compatible with the Android app's export format, using AES-GCM encryption and PBKDF2 key derivation.
 - **Zero-Persistence**: Decrypted data exists only in the volatile memory of the current page session. Reloading the page clears all data.
 
-## ✨ Features
+---
 
-### 1. Encrypted Import
-- Import `.enc` files exported from the Android Password Manager.
-- Enter your encryption password to securely decrypt and load your vault.
+## 📸 Functionality Walkthrough
 
-### 2. Vault Security
-- **Item Locking**: All items are "LOCKED" by default.
-- **Auth-to-Reveal**: You must re-enter your master password to unlock and view the details of any secure item.
-- **Auto-Re-Lock**: Simple manual controls to re-lock items after viewing.
+### 1. Secure Login & Import
+Start by dragging and dropping your encrypted `.enc` file (exported from the Android app) into the drop zone. Enter your **Encrypt Password** to securely decrypt and load your vault into memory.
 
-### 3. Privacy & Visibility
-- **Credential Masking**: Usernames and passwords are masked (`••••••`) even after unlocking an item.
-- **Global Toggle**: A master switch in the toolbar to reveal or hide all credentials simultaneously.
-- **Individual Toggles**: "Eye" icons for precise visibility control per field.
+![Login Screen](docs/images/login.png)
 
-### 4. User Interface
-- **View Modes**: Switch between a card-based **Grid View** and a compact **List View**.
-- **Responsive Design**: Optimized for desktops, tablets, and mobile screens using Tailwind CSS.
-- **Dark Mode**: Sleek dark interface for reduced eye strain and better readability.
+### 2. Vault View (Locked State)
+Once imported, your vault items are displayed. By default, **all items are LOCKED** for security. You can toggle between **Grid View** (cards) and **List View** (compact rows) using the toggle in the toolbar.
+
+**Grid View:**
+![Grid Locked](docs/images/grid_locked.png)
+
+**List View:**
+![List View](docs/images/list_view.png)
+
+### 3. Unlocking & Viewing Credentials
+To view a password, click the **Unlock** button on any item. You will be prompted to re-enter your master password.
+- **Masking**: Even after unlocking, credentials remain masked (`••••••`) by default to prevent shoulder surfing.
+- **Reveal**: Click the "Eye" icon next to any specific field to reveal the plaintext.
+- **Re-Lock**: Click the "Lock" icon to immediately secure the item again.
+
+![Unlocked Item](docs/images/item_unlocked.png)
+
+### 4. Global Visibility
+Use the **Master Eye Icon** in the top toolbar to globally reveal or hide credentials for all currently *unlocked* items. This is useful for quickly managing visibility during a session.
+
+---
 
 ## 🛠️ Tech Stack
 - **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
@@ -50,11 +60,6 @@ A secure, web-based companion for the Android Password Manager application. This
 3.  **Run Development Server**
     ```bash
     npm run dev
-    ```
-
-4.  **Build for Production**
-    ```bash
-    npm run build
     ```
 
 ## ⚠️ Important Note
