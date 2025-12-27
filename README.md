@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Password Manager Web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A secure, web-based companion for the Android Password Manager application. This application allows you to view your encrypted vault data directly in the browser with a focus on security and privacy.
 
-Currently, two official plugins are available:
+## 🔒 Security Architecture
+- **Client-Side Decryption**: Your data is decrypted locally in your browser using the **Web Crypto API**. Plaintext credentials never touch a server.
+- **AES-GCM Encryption**: Compatible with the Android app's export format, using AES-GCM encryption and PBKDF2 key derivation.
+- **Zero-Persistence**: Decrypted data exists only in the volatile memory of the current page session. Reloading the page clears all data.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## React Compiler
+### 1. Encrypted Import
+- Import `.enc` files exported from the Android Password Manager.
+- Enter your encryption password to securely decrypt and load your vault.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 2. Vault Security
+- **Item Locking**: All items are "LOCKED" by default.
+- **Auth-to-Reveal**: You must re-enter your master password to unlock and view the details of any secure item.
+- **Auto-Re-Lock**: Simple manual controls to re-lock items after viewing.
 
-## Expanding the ESLint configuration
+### 3. Privacy & Visibility
+- **Credential Masking**: Usernames and passwords are masked (`••••••`) even after unlocking an item.
+- **Global Toggle**: A master switch in the toolbar to reveal or hide all credentials simultaneously.
+- **Individual Toggles**: "Eye" icons for precise visibility control per field.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 4. User Interface
+- **View Modes**: Switch between a card-based **Grid View** and a compact **List View**.
+- **Responsive Design**: Optimized for desktops, tablets, and mobile screens using Tailwind CSS.
+- **Dark Mode**: Sleek dark interface for reduced eye strain and better readability.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Tech Stack
+- **Framework**: [React](https://react.dev/) + [Vite](https://vitejs.dev/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Cryptography**: Native [Web Crypto API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Crypto_API)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 Getting Started
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+1.  **Clone the repository**
+    ```bash
+    git clone https://github.com/AndroPlus/password-manager-web.git
+    cd password-manager-web
+    ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2.  **Install Dependencies**
+    ```bash
+    npm install
+    ```
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+3.  **Run Development Server**
+    ```bash
+    npm run dev
+    ```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+4.  **Build for Production**
+    ```bash
+    npm run build
+    ```
+
+## ⚠️ Important Note
+This is a viewer application. It currently supports **Read-Only** access to your exported vault. Editing or creating new credentials should be done via the primary Android application.
